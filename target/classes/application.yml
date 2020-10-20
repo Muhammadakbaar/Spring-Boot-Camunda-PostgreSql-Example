@@ -1,0 +1,63 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: camundapostgres
+    
+  profiles:
+    active: local  
+    
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/camunda2
+    username: sitamvan
+    password: "01111997"
+    
+    hikari:
+      jdbc-url: jdbc:postgresql://localhost:5432/camunda2
+      username: sitamvan
+      password: "01111997"
+      driver-class-name: org.postgresql.Driver
+      pool-name: CAMUNDA-HIKARI-POOL
+      idle-timeout: 3000
+      minimum-idle: 30
+      maximum-pool-size: 10
+      connection-timeout: 2000
+      connection-test-query: select 1
+      transaction-isolation: TRANSACTION_READ_COMMITTED 
+      
+camunda:
+  bpm:
+    enabled: true
+    
+    admin-user:
+      id: demo
+      password: demo
+      email: akbar@gmail.com
+      first-name: Muhammad
+      last-name: Akbar
+      
+    database:
+      schema-update: true
+      
+    filter:
+      create: All
+      
+    authorization:
+      enabled: true
+    
+    history-level: full
+    
+    auto-deployment-enabled: true
+    
+    default-number-of-retries: 3
+    
+    job-execution:
+      enabled: true
+      
+    webapp:
+      application-path: /camundapostgres
